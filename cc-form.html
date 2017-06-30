@@ -42,14 +42,14 @@ Example:
     gold-cc-expiration-input {
       width: 100px;
     }
-    @media only screen and (max-width: 400px) {
+    @media only screen and (max-width: 400px) { 
       .cc-card-container {
           display: none;
           visibility: hidden;
       }
     }
   </style>
-  
+
   <template>
     <div class$="cc-form-container layout {{_layoutClass(previewPosition)}}">
       <div class="cc-card-container">
@@ -71,44 +71,44 @@ Example:
           </div>
         </div>
       </div>
-      
+
       <div class="input-container">
-        <paper-input id="creditCardFullName" 
-                    name="creditCardFullName" 
-                    auto-validate="[[autoValidate]]" 
-                    required 
-                    value="{{fullName}}" 
-                    label="Cardholder Name"
-                    focused="{{_cardNameFocused}}"></paper-input>
-        <gold-cc-input id="creditCardNumber" 
+        <paper-input id="creditCardFullName"
+                    name="ccname"
                     auto-validate="[[autoValidate]]"
-                    name="creditCardNumber" 
-                    required 
-                    value="{{creditCard}}" 
-                    card-type="{{cardType}}" 
-                    label="Card Number" 
+                    required
+                    value="{{fullName}}"
+                    label="[[labelName]]"
+                    focused="{{_cardNameFocused}}"></paper-input>
+        <gold-cc-input id="creditCardNumber"
+                    auto-validate="[[autoValidate]]"
+                    name="cardnumber"
+                    required
+                    value="{{creditCard}}"
+                    card-type="{{cardType}}"
+                    label="[[labelNumber]]"
                     focused="{{_cardNumberFocused}}"></gold-cc-input>
         <div class="layout horizontal">
-          <gold-cc-expiration-input id="creditCardExpiryDate" 
-                    name="creditCardExpiryDate" 
-                    auto-validate="[[autoValidate]]" 
-                    required 
-                    value="{{expiryDate}}" 
-                    label="Expiry" 
+          <gold-cc-expiration-input id="creditCardExpiryDate"
+                    name="cc-exp"
+                    auto-validate="[[autoValidate]]"
+                    required
+                    value="{{expiryDate}}"
+                    label="[[labelExpiry]]"
                     focused="{{_cardExpiryFocused}}"></gold-cc-expiration-input>
           <div class="spacer"></div>
-          <gold-cc-cvc-input id="creditCardCvc" 
-                    name="creditCardCvc" 
-                    auto-validate="[[autoValidate]]" 
-                    required 
-                    card-type="[[cardType]]" 
-                    focused="{{_cardCvcFocused}}" 
+          <gold-cc-cvc-input id="creditCardCvc"
+                    name="cvc"
+                    auto-validate="[[autoValidate]]"
+                    required
+                    card-type="[[cardType]]"
+                    focused="{{_cardCvcFocused}}"
                     value="{{cvc}}"></gold-cc-cvc-input>
         </div>
       </div>
     </div>
   </template>
-  
+
 </dom-module>
 
 <script>
@@ -120,7 +120,7 @@ Example:
     properties: {
       version: {
         type: String,
-        value: 'v1.0.12'
+        value: 'v2.0.0'
       },
       _showBack: {
         type: Boolean,
@@ -152,8 +152,8 @@ Example:
       return focused ? 'cc-card-focused' : '';
     },
     _layoutClass: function(position) {
-      return position === 'none' ? ' vertical hidden' : 
-              position === 'top' ? 'vertical top' : 'vertical-reverse bottom'; 
+      return position === 'none' ? ' vertical hidden' :
+              position === 'top' ? 'vertical top' : 'vertical-reverse bottom';
     },
     _ccClass: function(cardType, showBack) {
       var classes;
