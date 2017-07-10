@@ -77,7 +77,7 @@ Example:
                     name="ccname"
                     auto-validate="[[autoValidate]]"
                     required
-                    error-message="[[errorMessage]]"
+                    error-message="[[errorMessageName]]"
                     value="{{fullName}}"
                     label="[[labelName]]"
                     focused="{{_cardNameFocused}}"></paper-input>
@@ -85,7 +85,7 @@ Example:
                     auto-validate="[[autoValidate]]"
                     name="cardnumber"
                     required
-                    error-message="[[errorMessage]]"
+                    error-message="[[errorMessageNumber]]"
                     value="{{creditCard}}"
                     card-type="{{cardType}}"
                     label="[[labelNumber]]"
@@ -95,7 +95,7 @@ Example:
                     name="cc-exp"
                     auto-validate="[[autoValidate]]"
                     required
-                    error-message="[[errorMessage]]"
+                    error-message="[[errorMessageExp]]"
                     value="{{expiryDate}}"
                     label="[[labelExpiry]]"
                     focused="{{_cardExpiryFocused}}"></gold-cc-expiration-input>
@@ -104,7 +104,7 @@ Example:
                     name="cvc"
                     auto-validate="[[autoValidate]]"
                     required
-                    error-message="[[errorMessage]]"
+                    error-message="[[errorMessageDate]]"
                     card-type="[[cardType]]"
                     focused="{{_cardCvcFocused}}"
                     value="{{cvc}}"></gold-cc-cvc-input>
