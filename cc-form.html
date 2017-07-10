@@ -213,8 +213,12 @@ Example:
     retrieveCard: function() {
       return {
         cardName: this.$.creditCardFullName.value,
-        cardNumber: this.$.creditCardNumber.value,
-        cardExpiryDate: this.$.creditCardExpiryDate.value,
+        cardNumber: this.$.creditCardNumber.value.replace(/ /g, ""),
+        cardExpiryDate: {
+          full: this.$.creditCardExpiryDate.value,
+          month: this.$.creditCardExpiryDate.value.split('/')[0],
+          year: this.$.creditCardExpiryDate.value.split('/')[1],
+        },
         cardCvc: this.$.creditCardCvc.value
       }
     }
