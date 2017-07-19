@@ -630,7 +630,7 @@
 
 .cc-card .cc-card-front .cc-card-cvc,
 .cc-card .cc-card-back .cc-card-cvc {
-    font-family: "Bitstream Vera Sans Mono", Consolas, Courier, monospace;
+    font-family: "Helvetica Neue", "Calibri Light", Roboto, sans-serif;
     font-size: 14px;
 }
 
@@ -688,14 +688,14 @@
 }
 
 .cc-card .cc-card-front .cc-card-lower .cc-card-number {
-    font-family: "Bitstream Vera Sans Mono", Consolas, Courier, monospace;
+    font-family: "Helvetica Neue", "Calibri Light", Roboto, sans-serif;
     font-size: 24px;
     clear: both;
     margin-bottom: 30px;
 }
 
 .cc-card .cc-card-front .cc-card-lower .cc-card-expiry {
-    font-family: "Bitstream Vera Sans Mono", Consolas, Courier, monospace;
+    font-family: "Helvetica Neue", "Calibri Light", Roboto, sans-serif;
     letter-spacing: 0em;
     position: relative;
     float: right;
@@ -731,7 +731,7 @@
 
 .cc-card .cc-card-front .cc-card-lower .cc-card-name {
     text-transform: uppercase;
-    font-family: "Bitstream Vera Sans Mono", Consolas, Courier, monospace;
+    font-family: "Helvetica Neue", "Calibri Light", Roboto, sans-serif;
     font-size: 20px;
     max-height: 45px;
     position: absolute;

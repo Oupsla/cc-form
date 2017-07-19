@@ -42,7 +42,7 @@ Example:
     gold-cc-expiration-input {
       width: 150px;
     }
-    @media only screen and (max-width: 400px) {
+    @media only screen and (max-width: 450px) {
       .cc-card-container {
           display: none;
           visibility: hidden;
@@ -75,6 +75,8 @@ Example:
       <div class="input-container">
         <paper-input id="creditCardFullName"
                     name="ccname"
+                    placeholder="Jean Dupont"
+                    always-float-label
                     auto-validate="[[autoValidate]]"
                     required
                     error-message="[[errorMessageName]]"
@@ -82,26 +84,35 @@ Example:
                     label="[[labelName]]"
                     focused="{{_cardNameFocused}}"></paper-input>
         <gold-cc-input id="creditCardNumber"
+                    always-float-label
+                    placeholder="•••• •••• •••• ••••"
+                    label="[[labelNumber]]"
                     auto-validate="[[autoValidate]]"
                     name="cardnumber"
                     required
                     error-message="[[errorMessageNumber]]"
                     value="{{creditCard}}"
                     card-type="{{cardType}}"
-                    label="[[labelNumber]]"
                     focused="{{_cardNumberFocused}}"></gold-cc-input>
         <div class="layout horizontal">
           <gold-cc-expiration-input id="creditCardExpiryDate"
                     name="cc-exp"
+                    always-float-label
+                    label="[[labelExpiry]]"
+                    placeholder="MM/AA"
+                    month-placeholder="MM"
+                    year-placeholder="AA"
                     auto-validate="[[autoValidate]]"
                     required
                     error-message="[[errorMessageExp]]"
                     value="{{expiryDate}}"
-                    label="[[labelExpiry]]"
                     focused="{{_cardExpiryFocused}}"></gold-cc-expiration-input>
           <div class="spacer"></div>
           <gold-cc-cvc-input id="creditCardCvc"
                     name="cvc"
+                    always-float-label
+                    label="CVV"
+                    placeholder="123"
                     auto-validate="[[autoValidate]]"
                     required
                     error-message="[[errorMessageDate]]"
@@ -204,10 +215,15 @@ Example:
     },
 
     validate: function() {
-      return this.$.creditCardFullName.validate()
-        && this.$.creditCardNumber.validate()
-        && this.$.creditCardExpiryDate.validate()
-        && this.$.creditCardCvc.validate();
+      var result = this.$.creditCardFullName.validate();
+      result = this.$.creditCardNumber.validate() && result;
+      result = this.$.creditCardExpiryDate.validate() && result;
+      result = this.$.creditCardCvc.validate() && result;
+
+      if(this.$.creditCardFullName.invalid) {
+        this.$.creditCardFullName.focus();
+      }
+      return result;
     },
 
     retrieveCard: function() {
@@ -221,6 +237,18 @@ Example:
         },
         cardCvc: this.$.creditCardCvc.value
       }
+    },
+
+    reset: function() {
+      this.$.creditCardFullName.value = "";
+      this.$.creditCardNumber.value = "";
+      this.$.creditCardExpiryDate.value = "";
+      this.$.creditCardCvc.value = "";
+
+      this.$.creditCardFullName.invalid = false;
+      this.$.creditCardNumber.invalid = false;
+      this.$.creditCardExpiryDate.invalid = false;
+      this.$.creditCardCvc.invalid = false;
     }
 
   });
