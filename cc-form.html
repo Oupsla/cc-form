@@ -106,7 +106,8 @@ Example:
                     required
                     error-message="[[errorMessageExp]]"
                     value="{{expiryDate}}"
-                    focused="{{_cardExpiryFocused}}"></gold-cc-expiration-input>
+                    focused="{{_cardExpiryFocused}}"
+                    on-completed="dateCompleted"></gold-cc-expiration-input>
           <div class="spacer"></div>
           <gold-cc-cvc-input id="creditCardCvc"
                     name="cvc"
@@ -213,7 +214,9 @@ Example:
     detached: function() {
        this._debug('cc-form detached');
     },
-
+    dateCompleted: function(){
+      this.$.creditCardCvc.focusNative();
+    },
     validate: function() {
       var result = this.$.creditCardFullName.validate();
       result = this.$.creditCardNumber.validate() && result;
